@@ -13,14 +13,14 @@ import dev.hytalemodding.discord.DiscordManager;
 
 import javax.annotation.Nonnull;
 
-public class ExamplePlugin extends JavaPlugin {
+public class DHytale extends JavaPlugin {
 
     private DiscordManager discordManager;
     // TODO: Replace with your actual Bot Token and Channel ID
     private static final String DISCORD_TOKEN = "YOUR_DISCORD_TOKEN";
     private static final String CHANNEL_ID = "YOUR_CHANNEL_ID";
 
-    public ExamplePlugin(@Nonnull JavaPluginInit init) {
+    public DHytale(@Nonnull JavaPluginInit init) {
         super(init);
     }
 
