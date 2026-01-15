@@ -1,7 +1,9 @@
-package dev.hytalemodding.discord;
+package com.livesgood.discord;
 
+import com.livesgood.DHytale;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Webhook;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -15,6 +17,9 @@ public class DiscordManager extends ListenerAdapter {
     private final String token;
     private final String channelId;
     private final BiConsumer<String, String> onMessageCallback; // User, Message
+    private final String ModName = DHytale.class
+                                    .getPackage()
+                                    .getName();
 
     public DiscordManager(String token, String channelId, BiConsumer<String, String> onMessageCallback) {
         this.token = token;
@@ -45,10 +50,29 @@ public class DiscordManager extends ListenerAdapter {
         if (this.jda == null) return;
         var channel = this.jda.getTextChannelById(channelId);
         if (channel != null) {
-            channel.sendMessage("**" + username + "**: " + content).queue();
+            channel.retrieveWebhooks().queue(webhooks -> {
+                Webhook webhook = webhooks.stream()
+                        .filter(w -> w.getName().equalsIgnoreCase(ModName))
+                        .findFirst()
+                        .orElse(null);
+                if (webhook == null) {
+                    channel.createWebhook(ModName).queue(createWebhook -> {
+                        sendToWebhook(createWebhook, username, content);
+                    });
+                } else {
+                    sendToWebhook(webhook, username, content);
+                }
+            }, error -> {
+                System.out.println("Error get webhook. No permission");
+            });
         }
     }
 
+    private void sendToWebhook(Webhook webhook, String username, String content) {
+        webhook.sendMessage(content)
+                .setUsername(username)
+                .queue();;
+    }
     @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;

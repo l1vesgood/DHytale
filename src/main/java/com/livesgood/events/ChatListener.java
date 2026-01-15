@@ -1,7 +1,7 @@
-package dev.hytalemodding.events;
+package com.livesgood.events;
 
 import com.hypixel.hytale.server.core.event.events.player.PlayerChatEvent;
-import dev.hytalemodding.discord.DiscordManager;
+import com.livesgood.discord.DiscordManager;
 
 public class ChatListener {
 

@@ -1,13 +1,13 @@
 {
-  "Group": "dev.hytalemodding",
+  "Group": "com.livesgood",
   "Name": "DHytale",
-  "Version": "1.0.0",
-  "Description": "Two-way chat synchronization between Hytale and Discord.",
+  "Version": "1.0.1",
+  "Description": "Hytale and Discord Chat Synchronization",
   "Authors": [
     {
-      "Name": "Your Name",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
+      "Name": "livesgood",
+      "Email": "me@komaru-best.cfd",
+      "Url": "https://me.komaru-best.cfd"
     }
   ],
   "Website": "https://your-plugin-website.com",
@@ -16,5 +16,5 @@
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "dev.hytalemodding.DHytale"
+  "Main": "com.livesgood.DHytale"
 }
