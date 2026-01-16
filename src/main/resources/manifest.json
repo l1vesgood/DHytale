@@ -1,6 +1,6 @@
 {
   "Group": "com.livesgood",
-  "Name": "DHytale",
+  "Name": "HDiscordSRV",
   "Version": "1.0.1",
   "Description": "Hytale and Discord Chat Synchronization",
   "Authors": [
@@ -16,5 +16,5 @@
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "com.livesgood.DHytale"
+  "Main": "com.livesgood.HDiscordSRV"
 }

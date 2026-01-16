@@ -14,15 +14,15 @@ import javax.annotation.Nonnull;
 import com.livesgood.config.ConfigManager;
 import com.livesgood.config.BotConfig;
 
-public class DHytale extends JavaPlugin {
+public class HDiscordSRV extends JavaPlugin {
 
     private DiscordManager discordManager;
     private ConfigManager configManager;
-    private final String ModName = DHytale.class
+    private final String ModName = HDiscordSRV.class
             .getPackage()
             .getName();
 
-    public DHytale(@Nonnull JavaPluginInit init) {
+    public HDiscordSRV(@Nonnull JavaPluginInit init) {
         super(init);
     }
 

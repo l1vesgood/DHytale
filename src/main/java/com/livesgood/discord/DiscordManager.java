@@ -1,6 +1,6 @@
 package com.livesgood.discord;
 
-import com.livesgood.DHytale;
+import com.livesgood.HDiscordSRV;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Webhook;
@@ -17,7 +17,7 @@ public class DiscordManager extends ListenerAdapter {
     private final String token;
     private final String channelId;
     private final BiConsumer<String, String> onMessageCallback; // User, Message
-    private final String ModName = DHytale.class
+    private final String ModName = HDiscordSRV.class
                                     .getPackage()
                                     .getName();
 
