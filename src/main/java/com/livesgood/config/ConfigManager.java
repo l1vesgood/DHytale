@@ -38,7 +38,19 @@ public class ConfigManager {
     }
 
     private void createDefaultConfig() {
-        this.config = new BotConfig("YOUR_BOT_TOKEN", "YOUR_CHANNEL_ID");
+        java.util.Map<String, MessagesConfig> messages = new java.util.HashMap<>();
+        
+        messages.put("en", new MessagesConfig(
+            "{player} has joined the server",
+            "{player} has left the server"
+        ));
+
+        messages.put("ru", new MessagesConfig(
+            "{player} присоединился к игре",
+            "{player} покинул игру"
+        ));
+
+        this.config = new BotConfig("YOUR_BOT_TOKEN", "YOUR_CHANNEL_ID", "en", messages);
         save();
     }
 

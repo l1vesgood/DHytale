@@ -1,7 +1,7 @@
 {
   "Group": "com.livesgood",
   "Name": "HDiscordSRV",
-  "Version": "1.0.1",
+  "Version": "1.1",
   "Description": "Hytale and Discord Chat Synchronization",
   "Authors": [
     {
