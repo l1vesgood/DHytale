@@ -79,40 +79,18 @@ public class DiscordManager extends ListenerAdapter {
         var channel = this.jda.getTextChannelById(channelId);
 
         if (channel != null) {
-            channel.retrieveWebhooks().queue(webhooks -> {
-                Webhook webhook = webhooks.stream()
-                        .filter(w -> w.getName().equalsIgnoreCase(ModName))
-                        .findFirst()
-                        .orElse(null);
+            MessageEmbed embed = new EmbedBuilder()
+                    .setTitle(title)
+                    .setColor(color)
+                    .build();
 
-                MessageEmbed embed = new EmbedBuilder()
-                        .setTitle(title)
-                        .setColor(color)
-                        .build();
-
-                if (webhook == null) {
-                    channel.createWebhook(ModName).queue(createWebhook -> {
-                        sendEmbedToWebhook(createWebhook, embed);
-                    });
-                } else {
-                    sendEmbedToWebhook(webhook, embed);
-                }
-            }, error -> {
-                System.out.println("Error get webhook. No permission");
-            });
+            channel.sendMessageEmbeds(embed).queue();
         }
     }
 
     private void sendToWebhook(Webhook webhook, String username, String content) {
         webhook.sendMessage(content)
                 .setUsername(username)
-                .queue();
-        ;
-    }
-
-    private void sendEmbedToWebhook(Webhook webhook, MessageEmbed embed) {
-        webhook.sendMessageEmbeds(embed)
-                .setUsername(ModName)
                 .queue();
     }
 
